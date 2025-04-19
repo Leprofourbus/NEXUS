@@ -87,13 +87,92 @@ def menu():
             
             elif action == "0":
                 menu()
+            
+            elif action == "2":
+                print(Fore.YELLOW + "En quelle langue veux-tu bloquer le compte ?\n")
+                print(Fore.CYAN + "[1]   Bulgare            [2]   Chinois (Simplifié)     [3]   Chinois (Traditionnel)")
+                print(Fore.CYAN + "[4]   Croate             [5]   Tchèque                 [6]   Danois")
+                print(Fore.CYAN + "[7]   Néerlandais        [8]   Anglais Américain       [9]   Anglais Britannique")
+                print(Fore.CYAN + "[10]  Finnois            [11]  Français                [12]  Allemand")
+                print(Fore.CYAN + "[13]  Grec               [14]  Hindi                   [15]  Hongrois")
+                print(Fore.CYAN + "[16]  Italien            [17]  Japonais                [18]  Coréen")
+                print(Fore.CYAN + "[19]  Lituanien          [20]  Norvégien               [21]  Polonais")
+                print(Fore.CYAN + "[22]  Portugais (Brésil) [23]  Roumain                 [24]  Russe")
+                print(Fore.CYAN + "[25]  Espagnol (Espagne) [26]  Suédois                 [27]  Thaïlandais")
+                print(Fore.CYAN + "[28]  Turc               [29]  Ukrainien               [30]  Vietnamien\n")
+
+                langue_bloquee = input(" ")
+
+                if langue_bloquee == "1":
+                    langue_bloque(token, "bg")
+                elif langue_bloquee == "2":
+                    langue_bloque(token, "zh-CN")
+                elif langue_bloquee == "3":
+                    langue_bloque(token, "zh-TW")
+                elif langue_bloquee == "4":
+                    langue_bloque(token, "hr")
+                elif langue_bloquee == "5":
+                    langue_bloque(token, "cs")
+                elif langue_bloquee == "6":
+                    langue_bloque(token, "da")
+                elif langue_bloquee == "7":
+                    langue_bloque(token, "nl")
+                elif langue_bloquee == "8":
+                    langue_bloque(token, "en-US")
+                elif langue_bloquee == "9":
+                    langue_bloque(token, "en-GB")
+                elif langue_bloquee == "10":
+                    langue_bloque(token, "fi")
+                elif langue_bloquee == "11":
+                    langue_bloque(token, "fr")
+                elif langue_bloquee == "12":
+                    langue_bloque(token, "de")
+                elif langue_bloquee == "13":
+                    langue_bloque(token, "el")
+                elif langue_bloquee == "14":
+                    langue_bloque(token, "hi")
+                elif langue_bloquee == "15":
+                    langue_bloque(token, "hu")
+                elif langue_bloquee == "16":
+                    langue_bloque(token, "it")
+                elif langue_bloquee == "17":
+                    langue_bloque(token, "ja")
+                elif langue_bloquee == "18":
+                    langue_bloque(token, "ko")
+                elif langue_bloquee == "19":
+                    langue_bloque(token, "lt")
+                elif langue_bloquee == "20":
+                    langue_bloque(token, "no")
+                elif langue_bloquee == "21":
+                    langue_bloque(token, "pl")
+                elif langue_bloquee == "22":
+                    langue_bloque(token, "pt-BR")
+                elif langue_bloquee == "23":
+                    langue_bloque(token, "ro")
+                elif langue_bloquee == "24":
+                    langue_bloque(token, "ru")
+                elif langue_bloquee == "25":
+                    langue_bloque(token, "es-ES")
+                elif langue_bloquee == "26":
+                    langue_bloque(token, "sv-SE")
+                elif langue_bloquee == "27":
+                    langue_bloque(token, "th")
+                elif langue_bloquee == "28":
+                    langue_bloque(token, "tr")
+                elif langue_bloquee == "29":
+                    langue_bloque(token, "uk")
+                elif langue_bloquee == "30":
+                    langue_bloque(token, "vi")
+                else:
+                    print(Fore.RED + "\nOption invalide. Réessaie...\n")
+                    time.sleep(1)
+
+
             else:
                 print(Fore.RED + "\nOption invalide. Réessaie...\n")
                 time.sleep(1)
 
-        elif action == "2":
-            
-
+                
 def token_start():
     cls()
     user_id = input(Fore.GREEN + "\nEntrez l'ID de l'utilisateur à suivre : ")
@@ -112,6 +191,7 @@ def idee():
     print(Fore.BLUE + "\nFonctionnalité à venir... 🚧")
     input(Fore.YELLOW + "\nAppuie sur Entrée pour revenir au menu...")
     menu()
+    
 #### ENVOIE DE MESSAGE ###
 def discord_msg_send(token, message, channel_id, nmbr_msg):
     url = f"https://discord.com/api/v10/channels/{channel_id}/messages"
